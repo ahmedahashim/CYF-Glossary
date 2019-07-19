@@ -22,3 +22,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.add-new-wrapper{
+  margin: 0 auto;
+}
+
+.plus{
+  font-weight: bold;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: right;
+}
