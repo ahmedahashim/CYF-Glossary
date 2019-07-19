@@ -45,7 +45,6 @@ export default class SearchResults extends Component {
 
 
     render() {
-      console.log(this.state.results)
         return (
           <Fragment>
           <div className="h-100 container mt-1">
