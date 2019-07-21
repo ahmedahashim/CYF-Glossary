@@ -14,9 +14,10 @@ const Data =props=>{
           <div className="description">{stripHtml(props.data.definition)}</div>
          
         </div>
-        <div className='resources'>{props.data.related_terms}</div>
-        <div className='resources'> {props.data.resources}</div>
-
+        <div className='content'>{props.data.related_terms}</div>
+        <div className='content'>
+        <a id="link" href={props.data.resources}>{props.data.resources}</a>
+</div>
     </div>
   );
 };

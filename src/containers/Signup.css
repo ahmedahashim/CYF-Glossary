@@ -47,6 +47,7 @@ input {
   border-radius: 5px;
   outline: none;
   border: 1px solid #cfcfcf;
+  width:318px
 }
 
 input::placeholder {
@@ -85,10 +86,10 @@ input.error {
   margin-bottom: 15px;
 }
 
-.firstName,
-.lastName 
+
+#name
 {
-  width: 49%;
+  width:156px;
 }
 
 .email,
@@ -129,3 +130,6 @@ input.error {
 .createAccount small {
   color: #999;
   font-weight: lighter;}
+  #haveaccount{
+    font-size: 15px;
+  }
