@@ -1,19 +1,16 @@
 import React, { Component, Fragment } from "react";
 
-
-
 class SingleInput extends Component {
+  callback = e => {
+    e.preventDefault();
+    const value = e.target.value;
+    this.props.controlFunc(value, this.props.name);
+  };
 
-callback = (e) => {
-  e.preventDefault()
-  const value = e.target.value;
-  this.props.controlFunc(value, this.props.name)
-}
-
-    render() {
-        return (
-          <Fragment>
-    <div className="loginEmail">
+  render() {
+    return (
+      <Fragment>
+        <div className="loginEmail">
           <label htmlFor={this.props.name}>{this.props.label}</label>
           <input
             placeholder={this.props.placeholder}
@@ -22,11 +19,10 @@ callback = (e) => {
             onChange={this.callback}
             noValidate
           />
-    </div>
-
-          </Fragment>
-        );
-    }
+        </div>
+      </Fragment>
+    );
+  }
 }
 
-export default SingleInput
+export default SingleInput;

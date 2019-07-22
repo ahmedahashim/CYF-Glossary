@@ -15,9 +15,9 @@ export default () =>
         <Route path="/login" exact component={Login} />
         <Route path="/Signup" exact component={Signup} />
         <Route path="/Search" exact component={Search} />
-        <Route path="/New" component={AddNewTerm} />
-        <Route path="/search/:query" component={SearchResults} />
-        <Route path="/:topic/:term" component={SingleTerm} />
+        <Route path="/new" component={AddNewTerm}/>
+        <Route path="/search/:query" component={SearchResults}/>
+        <Route path="/:topic/:term" component={SingleTerm}/>
         { /* Finally, catch all unmatched routes */}
         <Route component={NotFound} />
 
