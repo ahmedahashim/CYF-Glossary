@@ -42,16 +42,15 @@ class Signup extends Component {
       }
     };
   }
-    handle = (event) => {
-        if (this.state.password !== this.state.confirmPassword) {
-           alert("The passwords doesn't match")
-            return false; // The form won't submit
-        }
-        else return true; // The form will submit
+  handleConfirmPassword = (event) => {
+    if (event.target.value !== this.state.password) {
+  
+      this.setState({ confirmPassword: event.target.value })
     }
+  }
   handleSubmit = e => {
     e.preventDefault();
-
+  
     if (formValid(this.state)) {
       console.log(`
         --SUBMITTING--
@@ -63,8 +62,13 @@ class Signup extends Component {
         Confirm Password:${this.state.confirmPassword}
       `);
     } else {
-      console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
+      alert("FORM INVALID ");
     }
+    if (this.state.password !== this.state.confirmPassword) {
+      alert("The passwords doesn't match")
+      return false; // The form won't submit
+    }
+    else return true; // The form will submit
   };
 
   handleChange = e => {
@@ -93,10 +97,10 @@ class Signup extends Component {
         formErrors.password =
           value.length < 6 ? "minimum 6 characaters required" : "";
         break;
-      case "confirmPassword":
-        formErrors.confirmPassword =
-          value.length < 6 ? "minimum 6 characaters required" : "";
-        break;
+      // case "confirmPassword":
+      //   formErrors.confirmPassword =
+      //     value.length < 6 ? "minimum 6 characaters required" : "";
+      //   break;
       default:
         break;
     }
@@ -114,7 +118,7 @@ class Signup extends Component {
           <form onSubmit={this.handleSubmit} noValidate>
             <div className="firstName">
               <label htmlFor="firstName">First Name</label>
-              <input
+              <input id="name"
                 className={formErrors.firstName.length > 0 ? "error" : null}
                 placeholder="First Name"
                 type="text"
@@ -128,7 +132,7 @@ class Signup extends Component {
             </div>
             <div className="lastName">
               <label htmlFor="lastName">Last Name</label>
-              <input
+              <input id="name"
                 className={formErrors.lastName.length > 0 ? "error" : null}
                 placeholder="Last Name"
                 type="text"
@@ -157,7 +161,7 @@ class Signup extends Component {
 
             <div className="email">
               <label htmlFor="email">Email</label>
-              <input
+              <input 
                 className={formErrors.email.length > 0 ? "error" : null}
                 placeholder="Email"
                 type="email"
@@ -193,13 +197,13 @@ class Signup extends Component {
                             noValidate
                             onChange={this.handleChange}
                         />
-                        {formErrors.confirmPassword.length > 0 && (
+                        {/* {formErrors.confirmPassword.length > 0 && (
                             <span className="errorMessage">{formErrors.confirmPassword}</span>
-                        )}
+                        )} */}
                     </div>
             <div className="createAccount">
               <button type="submit">Create Account</button>
-              <Link to="/Login">Already Have an Account?</Link>
+              <Link id="haveaccount" to="/Login">Already Have an Account?</Link>
             </div>
           </form>
         </div>

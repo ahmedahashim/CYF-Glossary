@@ -28,13 +28,16 @@ class NavBar extends Component {
               <LinkContainer to="/Home">
                 <NavItem>Home</NavItem>
               </LinkContainer>
+
               <LinkContainer to="/signup">
                 <NavItem>Signup</NavItem>
               </LinkContainer>
               <LinkContainer to="/login">
                 <NavItem>Login</NavItem>
               </LinkContainer>
-              
+              <LinkContainer to="/new">
+                <NavItem>Add Term</NavItem>
+              </LinkContainer>
               <NavItem href="https://codeyourfuture.io/about/">About Us</NavItem>
               
             </Nav>

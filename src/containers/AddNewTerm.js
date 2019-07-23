@@ -4,7 +4,7 @@ import AddNewRelated from "./AddNewRelated";
 import SingleInput from "./SingleInput";
 import SingleTextArea from "./SingleTextArea";
 import GeneratedLink from "./GeneratedLink";
-import "./Login.css";
+import "./AddNewTerm.css";
 
 class AddNewTerm extends Component {
   constructor(props) {

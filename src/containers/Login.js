@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link, Redirect } from "react-router-dom";
 
 import "./Login.css";
 const emailRegex = RegExp(
@@ -24,7 +25,7 @@ const formValid = ({ formErrors, ...rest }) => {
 class Login extends Component {
   constructor(props) {
     super(props);
-
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       email: null,
       password: null,
@@ -42,13 +43,14 @@ class Login extends Component {
     if (formValid(this.state)) {
       console.log(`
         --SUBMITTING--
-       
+
         Email: ${this.state.email}
         Password: ${this.state.password}
-      
+
       `);
+      window.location= "Search";
     } else {
-      console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
+      alert("FORM INVALID");
     }
   };
 
@@ -110,7 +112,10 @@ class Login extends Component {
               )}
             </div>
             <div className="createAccount">
-              <button type="submit">Login</button>
+              <button type="submit" onClick={this.handleSubmit}>
+                Login
+              </button>
+              <div>Forgot Password?</div>
             </div>
           </form>
         </div>
