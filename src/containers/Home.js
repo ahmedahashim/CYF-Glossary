@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Home.css";
 import Search from "./Search";
+import SingleSearchResult from "./SingleSearchResult"
 
 // import Data from"./Definitions.json"
 import Term from "./Term";
@@ -23,10 +24,20 @@ class Home extends Component {
           <Search />
         </div>
         <div className="flext-container">
-          {this.state.searchData.map(data => (
-            <Term key={data.id} data={data} />
-          ))}
-        </div>
+        {this.state.searchData.map((result, key) => {
+      return (
+        <SingleSearchResult
+          key={key}
+          term={result.term}
+          definition={result.definition}
+          topic={result.topic}
+          termSlug={result.term_slug}
+          topicSlug={result.topic_slug}
+        />
+      )
+    
+        })}
+      </div>
       </div>
     );
   }

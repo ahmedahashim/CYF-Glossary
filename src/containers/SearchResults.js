@@ -36,7 +36,7 @@ export default class SearchResults extends Component {
   render() {
     return (
       <Fragment>
-        <div className="h-100 container mt-1">
+        <div className="results-container">
           <h1>Search Results</h1>
           <div className="results-wrapper">
             {this.state.results === null ? null : this.generateResults()}
