@@ -24,6 +24,7 @@ class Home extends Component {
           <Search />
         </div>
         <div className="flext-container">
+        <div className="results-wrapper">
         {this.state.searchData.map((result, key) => {
       return (
         <SingleSearchResult
@@ -37,6 +38,7 @@ class Home extends Component {
       )
     
         })}
+        </div>
       </div>
       </div>
     );
