@@ -49,10 +49,16 @@ code {
 
 }
 
+
+
 .single-result-link {
   margin-left: 15px;
 }
 
+.icon{
+  cursor: pointer;
+  width: 100%;
+}
 
 
 .content a{

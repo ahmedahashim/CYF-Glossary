@@ -34,9 +34,6 @@ class SingleTerm extends Component {
           <h2>{this.state.term.term}</h2>
           <hr className="term-hr" />
           <p>{this.state.term.definition}</p>
-          <h2>Code Example</h2>
-          <hr className="term-hr" />
-          <p>{this.state.term.code_example}</p>
           <h2>Additional Resources</h2>
           <hr className="term-hr" />
           <SingleResources

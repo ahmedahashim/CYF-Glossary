@@ -9,7 +9,8 @@ export default class SingleResources extends Component {
     super(props);
     this.state = {
       count: [],
-      resources: this.props.content
+      resources: this.props.content,
+      addResource: false
     };
   }
 
@@ -41,7 +42,8 @@ export default class SingleResources extends Component {
 
   HandleClick = e => {
     this.setState(prevState => ({
-      count: [...prevState.count, "add"]
+      count: [...prevState.count, "add"],
+      addResource: true
     }));
   };
 
@@ -49,7 +51,8 @@ export default class SingleResources extends Component {
     const currentState = this.state.count
     const newState = currentState.slice(0, currentState.length - 1)
     this.setState(prevState => ({
-      count: newState
+      count: newState,
+      addResource: false
     }));
   };
 
@@ -84,13 +87,14 @@ export default class SingleResources extends Component {
                     size="2x"
                   />{" "}
                 </span>
-                <span className="icon">
+                {! this.state.addResource ? null:                 <span className="icon">
                   <FontAwesomeIcon
                     icon={faMinusSquare}
                     onClick={this.HandleRemove}
                     size="2x"
-                  />{" "}
-                </span>
+                  />{" "}</span> }
+
+                
                 </div>
       </Fragment>
     );
