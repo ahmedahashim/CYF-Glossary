@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
-import SingleResources from "./SingleResources"
-import SingleRelated from "./SingleRelated"
+import SingleResources from "./SingleResources";
+import SingleRelated from "./SingleRelated";
 import "./SingleTerm.css";
 
 import { Fetcher } from "./fetcher.js";
@@ -15,7 +15,7 @@ class SingleTerm extends Component {
   }
 
   HandleUpdate = data => {
-    console.log('running')
+    console.log("running");
     return this.setState({
       term: data
     });

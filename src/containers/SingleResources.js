@@ -19,7 +19,7 @@ export default class SingleResources extends Component {
       this.setState({
         resources: this.props.content
       });
-      const newState = this.state.count.slice(0, this.state.count.length - 1)
+      const newState = this.state.count.slice(0, this.state.count.length - 1);
       this.setState(prevState => ({
         count: newState
       }));
@@ -48,8 +48,8 @@ export default class SingleResources extends Component {
   };
 
   HandleRemove = e => {
-    const currentState = this.state.count
-    const newState = currentState.slice(0, currentState.length - 1)
+    const currentState = this.state.count;
+    const newState = currentState.slice(0, currentState.length - 1);
     this.setState(prevState => ({
       count: newState,
       addResource: false
@@ -63,7 +63,9 @@ export default class SingleResources extends Component {
           {this.state.resources.map((link, index) => {
             return (
               <li key={index}>
-                <a className='link' href={link}>{link} </a>
+                <a className="link" href={link}>
+                  {link}{" "}
+                </a>
               </li>
             );
           })}
@@ -80,22 +82,23 @@ export default class SingleResources extends Component {
           {this.state.count.length > 0 ? this.addContent() : null}
         </ul>
         <div>
-        <span className="icon">
-                  <FontAwesomeIcon
-                    icon={faPlusSquare}
-                    onClick={this.HandleClick}
-                    size="2x"
-                  />{" "}
-                </span>
-                {! this.state.addResource ? null:                 <span className="icon">
-                  <FontAwesomeIcon
-                    icon={faMinusSquare}
-                    onClick={this.HandleRemove}
-                    size="2x"
-                  />{" "}</span> }
-
-                
-                </div>
+          <span className="icon">
+            <FontAwesomeIcon
+              icon={faPlusSquare}
+              onClick={this.HandleClick}
+              size="2x"
+            />{" "}
+          </span>
+          {!this.state.addResource ? null : (
+            <span className="icon">
+              <FontAwesomeIcon
+                icon={faMinusSquare}
+                onClick={this.HandleRemove}
+                size="2x"
+              />{" "}
+            </span>
+          )}
+        </div>
       </Fragment>
     );
   }

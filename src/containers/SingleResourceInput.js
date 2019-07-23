@@ -28,8 +28,6 @@ export default class SingleResourceInput extends Component {
     this.sendFetch(reqBody);
   };
 
-
-
   sendFetch(obj) {
     return fetch(
       `https://cyf-glossary-api.glitch.me/api/pushOne/${this.props.id}`,
@@ -44,12 +42,11 @@ export default class SingleResourceInput extends Component {
       .then(response => response.json())
       .catch(error => console.error("Error:", error))
       .then(response => {
-        if(response._id){
-          this.props.handleUpdate(response)
+        if (response._id) {
+          this.props.handleUpdate(response);
         }
       });
   }
-
 
   render() {
     return (
@@ -62,13 +59,12 @@ export default class SingleResourceInput extends Component {
             noValidate
             onChange={this.HandlePushNewRelated}
           />
-                <span className="add-margin-left icon">
-                  <FontAwesomeIcon
-                    icon={faPlusSquare}
-                    onClick={this.HandleSubmitNewRelated}
-                  />{" "}
-                </span>
-                
+          <span className="add-margin-left icon">
+            <FontAwesomeIcon
+              icon={faPlusSquare}
+              onClick={this.HandleSubmitNewRelated}
+            />{" "}
+          </span>
         </li>
       </Fragment>
     );

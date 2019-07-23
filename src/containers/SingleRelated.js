@@ -77,22 +77,22 @@ export default class SingleRelated extends Component {
           {this.state.count.length > 0 ? this.addContent() : null}
         </ul>
         <div>
-        <span className="icon">
-          <FontAwesomeIcon
-            icon={faPlusSquare}
-            onClick={this.HandleClick}
-            size="2x"
-          />{" "}
-        </span>
-        {! this.state.addRelated ? null : (
           <span className="icon">
             <FontAwesomeIcon
-              icon={faMinusSquare}
-              onClick={this.HandleRemove}
+              icon={faPlusSquare}
+              onClick={this.HandleClick}
               size="2x"
             />{" "}
           </span>
-        )}
+          {!this.state.addRelated ? null : (
+            <span className="icon">
+              <FontAwesomeIcon
+                icon={faMinusSquare}
+                onClick={this.HandleRemove}
+                size="2x"
+              />{" "}
+            </span>
+          )}
         </div>
       </Fragment>
     );
