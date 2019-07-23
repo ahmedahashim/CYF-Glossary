@@ -5,18 +5,20 @@ import "./SingleSearchResult.css";
 export default class SingleSearchResult extends Component {
   render() {
     return (
-      <div className="col-sm-12 single-result mb-2" key={this.props.key}>
-        <Link to={`/${this.props.topicSlug}/${this.props.termSlug}`} />
-        <a href="https://developer.mozilla.org/en-US/docs/Web">
+      <div className="col-sm-12 single-result" key={this.props.key}>
+        <Link className='single-result-link' to={`/${this.props.topicSlug}/${this.props.termSlug}`} >
           {this.props.term}
-        </a>
+        </Link>
         <div className="content">
           <p>{this.props.definition}</p>
         </div>
-
+        <Link to={`/search/${this.props.topic}`}>
         <span className="badge result-badge-topic result-badge-margin">
-          {this.props.topic}
+        {this.props.topic}
         </span>
+        </Link>
+          
+       
       </div>
     );
   }

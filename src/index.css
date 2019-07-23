@@ -38,3 +38,30 @@ code {
   cursor: pointer;
   text-align: right;
 }
+
+.results-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: transparentr gba(0, 0, 0, 0);
+
+}
+
+.single-result-link {
+  margin-left: 15px;
+}
+.content a{
+  text-decoration: none;
+  color: white;
+}
+
+.content a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+}
+
+.navbar{
+  z-index: 1;
+}
