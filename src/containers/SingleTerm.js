@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import SingleResources from "./SingleResources"
 import "./SingleTerm.css";
 
 import { Fetcher } from "./fetcher.js";
@@ -11,6 +12,13 @@ class SingleTerm extends Component {
       term: null
     };
   }
+
+  HandleUpdate = data => {
+    console.log('running')
+    return this.setState({
+      term: data
+    });
+  };
 
   async componentDidMount() {
     const term = await fetcher.fetchTermByPath(this.props);
@@ -31,15 +39,14 @@ class SingleTerm extends Component {
           <p>{this.state.term.code_example}</p>
           <h2>Additional Resources</h2>
           <hr className="term-hr" />
-          <ul>
-            {this.state.term.resources.map((link, index) => {
-              return (
-                <li key={index}>
-                  <a className='resource-link' href={link}>{link} </a>
-                </li>
-              );
-            })}
-          </ul>
+          <SingleResources
+            content={this.state.term.resources}
+            name="resources"
+            placeholder="Resource URL"
+            id={this.state.term._id}
+            handleUpdate={this.HandleUpdate}
+          />
+
           <h2>Related Terms</h2>
           <hr className="term-hr" />
           <ul>
