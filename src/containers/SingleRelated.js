@@ -1,13 +1,30 @@
 import React, { Component, Fragment } from "react";
 import SingleResourceInput from "./SingleResourceInput";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
+import { faMinusSquare } from "@fortawesome/free-solid-svg-icons";
 
 export default class SingleRelated extends Component {
   constructor(props) {
     super(props);
     this.state = {
       count: [],
-      terms: this.props.content
+      terms: this.props.content,
+      addRelated: false
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.content !== prevProps.content) {
+      this.setState({
+        terms: this.props.content
+      });
+      const newState = this.state.count.slice(0, this.state.count.length - 1);
+      this.setState(prevState => ({
+        count: newState,
+        addRelated: false
+      }));
+    }
   }
 
   addContent = () => {
@@ -18,14 +35,25 @@ export default class SingleRelated extends Component {
           placeholder={this.props.placeholder}
           key={key}
           id={this.props.id}
+          handleUpdate={this.props.handleUpdate}
         />
       );
     });
   };
 
+  HandleRemove = e => {
+    const currentState = this.state.count;
+    const newState = currentState.slice(0, currentState.length - 1);
+    this.setState(prevState => ({
+      count: newState,
+      addRelated: false
+    }));
+  };
+
   HandleClick = e => {
     this.setState(prevState => ({
-      count: [...prevState.count, "add"]
+      count: [...prevState.count, "add"],
+      addRelated: true
     }));
   };
 
@@ -48,9 +76,24 @@ export default class SingleRelated extends Component {
           {this.ResourceContent()}
           {this.state.count.length > 0 ? this.addContent() : null}
         </ul>
-        <span>
-          <button onClick={this.HandleClick}>Add</button>
+        <div>
+        <span className="icon">
+          <FontAwesomeIcon
+            icon={faPlusSquare}
+            onClick={this.HandleClick}
+            size="2x"
+          />{" "}
         </span>
+        {! this.state.addRelated ? null : (
+          <span className="icon">
+            <FontAwesomeIcon
+              icon={faMinusSquare}
+              onClick={this.HandleRemove}
+              size="2x"
+            />{" "}
+          </span>
+        )}
+        </div>
       </Fragment>
     );
   }

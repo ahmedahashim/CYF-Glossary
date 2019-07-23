@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import SingleResources from "./SingleResources"
+import SingleRelated from "./SingleRelated"
 import "./SingleTerm.css";
 
 import { Fetcher } from "./fetcher.js";
@@ -46,11 +47,13 @@ class SingleTerm extends Component {
 
           <h2>Related Terms</h2>
           <hr className="term-hr" />
-          <ul>
-            {this.state.term.related_terms.map((related, index) => {
-              return <li key={index}>{related}</li>;
-            })}
-          </ul>
+          <SingleRelated
+            content={this.state.term.related_terms}
+            name="related_terms"
+            placeholder="Related Term"
+            id={this.state.term._id}
+            handleUpdate={this.HandleUpdate}
+          />
         </Fragment>
       );
     }
