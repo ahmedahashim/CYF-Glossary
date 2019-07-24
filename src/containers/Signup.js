@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Signup.css";
 import ls from "local-storage";
+import { withRouter } from "react-router-dom";
 const emailRegex = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 );
@@ -92,10 +93,21 @@ class Signup extends Component {
       .then(response => {
         if (response._id) {
           ls.set("currentUser", response._id);
-          console.log(response);
+          this.handleRedirect()
+
         }
       });
   };
+
+
+  handleRedirect = () => {
+    const location = `/`;
+
+    this.props.history.push(location);
+    this.props.history.replace(location);
+
+}
+
 
   handleChange = e => {
     e.preventDefault();
@@ -242,4 +254,4 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+export default withRouter(Signup)

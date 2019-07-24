@@ -53,7 +53,7 @@ class Login extends Component {
         email: this.state.email,
         password: this.state.password
       };
-      console.log(this.props.HandleCallback(loginObj));
+      this.props.HandleCallback(loginObj);
       // window.location= "Search";
     } else {
       alert("FORM INVALID");
