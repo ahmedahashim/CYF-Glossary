@@ -81,3 +81,15 @@ code {
   margin-left: 6px;
   font-size: 16px;
   }
+.button-container{
+  width: 20%;
+}
+
+.text-area-container{
+  width: 100%;
+}
+
+.results-wrapper{
+  width: 80%;
+  margin: 0 auto 50px;
+}
