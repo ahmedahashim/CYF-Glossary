@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Signup.css";
+import ls from 'local-storage';
 const emailRegex = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 );
@@ -61,6 +62,14 @@ class Signup extends Component {
         Status:${this.state.status}
         Confirm Password:${this.state.confirmPassword}
       `);
+      const regObj = {
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        email: this.state.email,
+        password: this.state.password,
+        role: this.state.status
+      }
+      this.SubmitUserRegistration(regObj);
     } else {
       alert("FORM INVALID ");
     }
@@ -70,6 +79,25 @@ class Signup extends Component {
     }
     else return true; // The form will submit
   };
+
+  SubmitUserRegistration = obj => {
+    const url = `https://cyf-glossary-api.glitch.me/api/register`;
+    return fetch(url, {
+      method: "POST",
+      body: JSON.stringify(obj),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(response => response.json())
+      .catch(error => console.error("Error:", error))
+      .then(response => {
+        if(response._id){
+            ls.set('currentUser', response._id)
+            console.log(response);
+        }
+      });
+  }
 
   handleChange = e => {
     e.preventDefault();

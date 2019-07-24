@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
+import ls from 'local-storage';
+
 
 import "./Login.css";
 const emailRegex = RegExp(
@@ -48,7 +50,12 @@ class Login extends Component {
         Password: ${this.state.password}
 
       `);
-      window.location= "Search";
+      const loginObj = {
+        email: this.state.email,
+        password: this.state.password
+      }
+      console.log(this.props.HandleCallback(loginObj))
+      // window.location= "Search";
     } else {
       alert("FORM INVALID");
     }
@@ -77,6 +84,7 @@ class Login extends Component {
   };
 
   render() {
+    console.log(ls.get('currentUser'))
     const { formErrors } = this.state;
 
     return (

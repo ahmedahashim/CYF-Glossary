@@ -5,6 +5,7 @@ import SingleInput from "./SingleInput";
 import SingleTextArea from "./SingleTextArea";
 import GeneratedLink from "./GeneratedLink";
 import "./AddNewTerm.css";
+import ls from 'local-storage';
 
 class AddNewTerm extends Component {
   constructor(props) {
@@ -29,7 +30,8 @@ class AddNewTerm extends Component {
       resources: Object.values(formData.resources),
       related_terms: Object.values(formData.related),
       term_slug: this.createSlug(formData.term),
-      topic_slug: this.createSlug(formData.topic)
+      topic_slug: this.createSlug(formData.topic),
+      user: ls.get('currentUser')
     };
     this.sendFetch(reqBody);
   };

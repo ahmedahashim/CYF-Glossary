@@ -8,11 +8,36 @@ import Search from "./containers/Search";
 import SearchResults from "./containers/SearchResults";
 import SingleTerm from "./containers/SingleTerm"
 import AddNewTerm from "./containers/AddNewTerm"
+import ls from 'local-storage';
+import { Fetcher } from "./containers/fetcher";
+const fetcher = new Fetcher();
+
+const callback = obj => {
+    const url = `https://cyf-glossary-api.glitch.me/api/login`;
+    return fetch(url, {
+      method: "POST",
+      body: JSON.stringify(obj),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(response => response.json())
+      .catch(error => console.error("Error:", error))
+      .then(response => {
+        if(response._id){
+            ls.set('currentUser', response._id)
+            console.log(response._id);
+        }
+      });
+    
+   
+}
+
 export default () =>
     <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/Home" exact component={Home} />
-        <Route path="/login" exact component={Login} />
+        <Route path='/login' render={(props) => <Login {...props} HandleCallback={callback} />} />
         <Route path="/Signup" exact component={Signup} />
         <Route path="/Search" exact component={Search} />
         <Route path="/new" component={AddNewTerm}/>
