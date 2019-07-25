@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import "./Home.css";
 import Search from "./Search";
-import SingleSearchResult from "./SingleSearchResult"
+import SingleSearchResult from "./SingleSearchResult";
+import "./Grid.css"
 
 // import Data from"./Definitions.json"
 import Term from "./Term";
@@ -24,20 +25,23 @@ class Home extends Component {
           <Search />
         </div>
         <div className="flext-container">
-        {this.state.searchData.map((result, key) => {
-      return (
-        <SingleSearchResult
-          key={key}
-          term={result.term}
-          definition={result.definition}
-          topic={result.topic}
-          termSlug={result.term_slug}
-          topicSlug={result.topic_slug}
-        />
-      )
-    
-        })}
-      </div>
+          <div className="results-wrapper">
+            {this.state.searchData.map((result, key) => {
+              return (
+                <Fragment key={key}>
+                  
+                    <SingleSearchResult
+                      term={result.term}
+                      definition={result.definition}
+                      topic={result.topic}
+                      termSlug={result.term_slug}
+                      topicSlug={result.topic_slug}
+                    />
+                </Fragment>
+              );
+            })}
+          </div>
+        </div>
       </div>
     );
   }

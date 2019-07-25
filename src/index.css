@@ -49,9 +49,18 @@ code {
 
 }
 
+
+
 .single-result-link {
   margin-left: 15px;
 }
+
+.icon{
+  cursor: pointer;
+  width: 100%;
+}
+
+
 .content a{
   text-decoration: none;
   color: white;
@@ -64,4 +73,23 @@ code {
 
 .navbar{
   z-index: 1;
+}
+
+.link{
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 6px;
+  font-size: 16px;
+  }
+.button-container{
+  width: 20%;
+}
+
+.text-area-container{
+  width: 100%;
+}
+
+.results-wrapper{
+  width: 80%;
+  margin: 0 auto 50px;
 }

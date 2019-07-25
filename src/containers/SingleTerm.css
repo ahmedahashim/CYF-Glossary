@@ -5,10 +5,12 @@
   flex-direction: column;
   background-color:white;
   text-align: left;
-  margin-top: 50px;
+  margin-top: 20px;
+  margin-left: 15px;
 }
 
 .term-hr{
   width: 30%;
   margin-left:0;
 }
+

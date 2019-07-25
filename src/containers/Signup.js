@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Signup.css";
+import ls from "local-storage";
+import { withRouter } from "react-router-dom";
 const emailRegex = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 );
@@ -31,7 +33,7 @@ class Signup extends Component {
       email: null,
       password: null,
       status: null,
-        confirmPassword:null,
+      confirmPassword: null,
       formErrors: {
         firstName: "",
         lastName: "",
@@ -42,15 +44,14 @@ class Signup extends Component {
       }
     };
   }
-  handleConfirmPassword = (event) => {
+  handleConfirmPassword = event => {
     if (event.target.value !== this.state.password) {
-  
-      this.setState({ confirmPassword: event.target.value })
+      this.setState({ confirmPassword: event.target.value });
     }
-  }
+  };
   handleSubmit = e => {
     e.preventDefault();
-  
+
     if (formValid(this.state)) {
       console.log(`
         --SUBMITTING--
@@ -61,15 +62,52 @@ class Signup extends Component {
         Status:${this.state.status}
         Confirm Password:${this.state.confirmPassword}
       `);
+      const regObj = {
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        email: this.state.email,
+        password: this.state.password,
+        role: this.state.status
+      };
+      this.SubmitUserRegistration(regObj);
     } else {
       alert("FORM INVALID ");
     }
     if (this.state.password !== this.state.confirmPassword) {
-      alert("The passwords doesn't match")
+      alert("The passwords doesn't match");
       return false; // The form won't submit
-    }
-    else return true; // The form will submit
+    } else return true; // The form will submit
   };
+
+  SubmitUserRegistration = obj => {
+    const url = `https://cyf-glossary-api.glitch.me/api/register`;
+    return fetch(url, {
+      method: "POST",
+      body: JSON.stringify(obj),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(response => response.json())
+      .catch(error => console.error("Error:", error))
+      .then(response => {
+        if (response._id) {
+          ls.set("currentUser", response._id);
+          this.handleRedirect()
+
+        }
+      });
+  };
+
+
+  handleRedirect = () => {
+    const location = `/`;
+
+    this.props.history.push(location);
+    this.props.history.replace(location);
+
+}
+
 
   handleChange = e => {
     e.preventDefault();
@@ -118,7 +156,8 @@ class Signup extends Component {
           <form onSubmit={this.handleSubmit} noValidate>
             <div className="firstName">
               <label htmlFor="firstName">First Name</label>
-              <input id="name"
+              <input
+                id="name"
                 className={formErrors.firstName.length > 0 ? "error" : null}
                 placeholder="First Name"
                 type="text"
@@ -132,7 +171,8 @@ class Signup extends Component {
             </div>
             <div className="lastName">
               <label htmlFor="lastName">Last Name</label>
-              <input id="name"
+              <input
+                id="name"
                 className={formErrors.lastName.length > 0 ? "error" : null}
                 placeholder="Last Name"
                 type="text"
@@ -161,7 +201,7 @@ class Signup extends Component {
 
             <div className="email">
               <label htmlFor="email">Email</label>
-              <input 
+              <input
                 className={formErrors.email.length > 0 ? "error" : null}
                 placeholder="Email"
                 type="email"
@@ -187,23 +227,25 @@ class Signup extends Component {
                 <span className="errorMessage">{formErrors.password}</span>
               )}
             </div>
-                    <div className="confirmPassword">
-                        <label htmlFor="confirmPassword">ConfirmPassword</label>
-                        <input
-                            className={formErrors.email.length > 0 ? "error" : null}
-                            placeholder="confirmPassword"
-                            type="password"
-                            name="confirmPassword"
-                            noValidate
-                            onChange={this.handleChange}
-                        />
-                        {/* {formErrors.confirmPassword.length > 0 && (
+            <div className="confirmPassword">
+              <label htmlFor="confirmPassword">ConfirmPassword</label>
+              <input
+                className={formErrors.email.length > 0 ? "error" : null}
+                placeholder="confirmPassword"
+                type="password"
+                name="confirmPassword"
+                noValidate
+                onChange={this.handleChange}
+              />
+              {/* {formErrors.confirmPassword.length > 0 && (
                             <span className="errorMessage">{formErrors.confirmPassword}</span>
                         )} */}
-                    </div>
+            </div>
             <div className="createAccount">
               <button type="submit">Create Account</button>
-              <Link id="haveaccount" to="/Login">Already Have an Account?</Link>
+              <Link id="haveaccount" to="/Login">
+                Already Have an Account?
+              </Link>
             </div>
           </form>
         </div>
@@ -212,4 +254,4 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+export default withRouter(Signup)
