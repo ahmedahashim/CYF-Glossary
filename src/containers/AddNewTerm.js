@@ -5,7 +5,7 @@ import SingleInput from "./SingleInput";
 import SingleTextArea from "./SingleTextArea";
 import GeneratedLink from "./GeneratedLink";
 import "./AddNewTerm.css";
-import ls from 'local-storage';
+import ls from "local-storage";
 
 class AddNewTerm extends Component {
   constructor(props) {
@@ -31,7 +31,7 @@ class AddNewTerm extends Component {
       related_terms: Object.values(formData.related),
       term_slug: this.createSlug(formData.term),
       topic_slug: this.createSlug(formData.topic),
-      user: ls.get('currentUser')
+      user: ls.get("currentUser")
     };
     this.sendFetch(reqBody);
   };
@@ -59,7 +59,7 @@ class AddNewTerm extends Component {
       .then(response => response.json())
       .catch(error => console.error("Error:", error))
       .then(response => {
-        console.log(response);
+        // console.log(response);
         this.setState({
           generatedLink: [response.topic_slug, response.term_slug]
         });
