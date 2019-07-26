@@ -17,7 +17,7 @@ class NavBar extends Component {
 
             <Navbar.Brand>
               <a href="/Home">
-          <img  alt=""src="http://codeyourfuture.io/wp-content/uploads/2019/03/cyf_brand.png" style={{ width: 200 }} />
+                <img  alt="Code your future logo"src="http://codeyourfuture.io/wp-content/uploads/2019/03/cyf_brand.png" style={{ width: 200 }} />
               </a>
             </Navbar.Brand>
             <Navbar.Toggle />

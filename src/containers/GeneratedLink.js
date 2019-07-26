@@ -12,7 +12,7 @@ class GeneratedLink extends Component {
             state: { post: this.props.term }
           }}
         >
-          Unqiue Link
+        See the created term
         </Link>
       </Fragment>
     );

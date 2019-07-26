@@ -83,11 +83,11 @@ class Search extends React.Component {
     return (
       <div>
         <div className="search">
-          <img
+          {/* <img
             alt=""
             src="http://codeyourfuture.io/wp-content/uploads/2019/03/cyf_brand.png"
             style={{ width: 100, height: 40 }}
-          />
+          /> */}
                 <form onSubmit={this.onFormSubmit} className="ui form">
           <input
             
