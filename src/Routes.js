@@ -16,7 +16,12 @@ const fetcher = new Fetcher();
 
 
 class Routes extends Component {
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      loggedin: false
+    };
+  }
     HandleUserLogin = obj => {
         const url = `https://cyf-glossary-api.glitch.me/api/login`;
         return fetch(url, {
@@ -39,8 +44,7 @@ class Routes extends Component {
     HandleRedirect = () => {
         const location = `/`;
       
-        this.props.history.push(location);
-        this.props.history.replace(location);
+        this.props.history.push(location, {loggedin: true});
       };
 
 

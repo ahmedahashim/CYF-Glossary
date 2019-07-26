@@ -1,5 +1,5 @@
-button{
-    background-color:#2ba560
+button {
+  background-color: #2ba560;
 }
 .container {
   height: 110vh;
@@ -8,10 +8,10 @@ button{
   flex-direction: column;
   justify-content: center;
   align-items: center;
- background-color: transparentr gba(0, 0, 0, 0);
+  background-color: transparentr gba(0, 0, 0, 0);
 }
 
-#addNew{
+#addNew {
   width: 400px;
   display: flex;
   flex-direction: column;
@@ -22,8 +22,7 @@ button{
 }
 form {
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
+  margin: 0 auto;
 }
 
 h1 {
@@ -38,7 +37,7 @@ h1 {
 label {
   font-size: 0.8em;
   margin-bottom: 0.25em;
-  color:black;
+  color: black;
   font-weight: bold;
 }
 
@@ -47,7 +46,7 @@ input {
   border-radius: 5px;
   outline: none;
   border: 1px solid #cfcfcf;
- width:318px;
+  width: 318px;
 }
 
 input::placeholder {
@@ -55,15 +54,15 @@ input::placeholder {
   font-weight: lighter;
   color: #999;
 }
- button {
-    background-color: #2ba560;
-    color: #fff;
-    border: 2px solid #fff;
-    width: 100%;
-    margin-top: 1em;
-    padding: 8px 0px;
-    font-size: 1em;
-    font-weight: lighter;
-    letter-spacing: 1px;
-    margin-bottom: 0.25em;
+button {
+  background-color: #2ba560;
+  color: #fff;
+  border: 2px solid #fff;
+  width: 100%;
+  margin-top: 1em;
+  padding: 8px 0px;
+  font-size: 1em;
+  font-weight: lighter;
+  letter-spacing: 1px;
+  margin-bottom: 0.25em;
 }
