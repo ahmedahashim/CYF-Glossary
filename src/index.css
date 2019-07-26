@@ -39,6 +39,10 @@ code {
   text-align: right;
 }
 
+.sm-col-6 a{
+  font-size: 16px;
+}
+
 .results-container{
   width: 100%;
   display: flex;
@@ -92,4 +96,8 @@ code {
 .results-wrapper{
   width: 80%;
   margin: 0 auto 50px;
+}
+
+.utility-margin-auto{
+  margin: -40px auto 10px;
 }

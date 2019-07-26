@@ -1,20 +1,23 @@
 import React, { Component, Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import "./Grid.css"
 
 class GeneratedLink extends Component {
   render() {
     return (
-      <Fragment>
-        <Link
-          className="text-center"
-          to={{
-            pathname: `/${this.props.topic}/${this.props.term}`,
-            state: { post: this.props.term }
-          }}
-        >
-          Unqiue Link
-        </Link>
-      </Fragment>
+        <div className='sm-col-6'>
+        <div className="alert alert-success" role="alert">
+          <Link
+            className="text-center"
+            to={{
+              pathname: `/${this.props.topic}/${this.props.term}`,
+              state: { post: this.props.term }
+            }}
+          >
+            {this.props.term}
+          </Link>
+        </div>
+        </div>
     );
   }
 }

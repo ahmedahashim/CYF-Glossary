@@ -4,17 +4,18 @@ import AddNewRelated from "./AddNewRelated";
 import SingleInput from "./SingleInput";
 import SingleTextArea from "./SingleTextArea";
 import GeneratedLink from "./GeneratedLink";
+import GeneratedError from "./GeneratedError";
 import "./AddNewTerm.css";
-import ls from 'local-storage';
+import ls from "local-storage";
 
 class AddNewTerm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       formData: {},
-      generatedLink: null
+      generatedLink: null,
+      generateError: false
     };
-
     this.handleSingle = this.handleSingle.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -31,9 +32,15 @@ class AddNewTerm extends Component {
       related_terms: Object.values(formData.related),
       term_slug: this.createSlug(formData.term),
       topic_slug: this.createSlug(formData.topic),
-      user: ls.get('currentUser')
+      user: ls.get("currentUser")
     };
     this.sendFetch(reqBody);
+    // this.inputRef.scrollIntoView(true , {behavior: "smooth"})
+    window.scroll({
+      top: 10,
+      left: 0,
+      behavior: "smooth"
+    });
   };
 
   // generateDataStructure = (single, label) => {
@@ -59,10 +66,15 @@ class AddNewTerm extends Component {
       .then(response => response.json())
       .catch(error => console.error("Error:", error))
       .then(response => {
-        console.log(response);
-        this.setState({
-          generatedLink: [response.topic_slug, response.term_slug]
-        });
+        if (response._id) {
+          this.setState({
+            generatedLink: [response.topic_slug, response.term_slug]
+          });
+        } else {
+          this.setState({
+            generateError: true
+          });
+        }
       });
   }
 
@@ -91,11 +103,23 @@ class AddNewTerm extends Component {
     }));
   };
 
+  // setInputRef = (inputEl) => {
+  //   this.inputRef = inputEl;
+
+  // }
+
   render() {
     return (
-      <Fragment>
-        <div className="container justify-content-center">
+      <div>
+        <div className="results-container justify-content-center">
           <h1 className="add-new-heading">Add New Term</h1>
+          {this.state.generatedLink === null ? null : (
+            <GeneratedLink
+              topic={this.state.generatedLink[0]}
+              term={this.state.generatedLink[1]}
+            />
+          )}
+          {this.state.generateError === false ? null : <GeneratedError />}
 
           <form onSubmit={this.handleSubmit} id="addNew">
             <div className="add-new-wrapper">
@@ -140,14 +164,8 @@ class AddNewTerm extends Component {
               </button>
             </div>
           </form>
-          {this.state.generatedLink === null ? null : (
-            <GeneratedLink
-              topic={this.state.generatedLink[0]}
-              term={this.state.generatedLink[1]}
-            />
-          )}
         </div>
-      </Fragment>
+      </div>
     );
   }
 }
