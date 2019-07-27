@@ -15,7 +15,7 @@ class SingleTerm extends Component {
   }
 
   HandleUpdate = data => {
-    console.log("running");
+    // console.log("running");
     return this.setState({
       term: data
     });
@@ -60,8 +60,8 @@ class SingleTerm extends Component {
   };
 
   render() {
-    console.log(this.props);
-    console.log(this.state.term);
+    // console.log(this.props);
+    // console.log(this.state.term);
     return (
       <Fragment>
         <div className="term-wrapper single-term-container">

@@ -13,7 +13,6 @@
   font-style: normal;
   font-weight: 700;
   line-height: 1;
-  
 }
 .navbar-default .navbar-nav > li > a {
   font-family: inherit;
@@ -24,7 +23,7 @@
   color: rgba(0, 0, 0, 1);
 }
 .navbar {
-  position: sticky;
+  position: absolute;
   top: 0;
   border: 0;
 }
@@ -36,8 +35,8 @@
   height: 4em;
   line-height: 80px;
 }
-.navbar-nav>li>a {
-    padding-top: 30px;
-    padding-bottom: 15px;
-    padding-right:50px;
+.navbar-nav > li > a {
+  padding-top: 30px;
+  padding-bottom: 15px;
+  padding-right: 50px;
 }
