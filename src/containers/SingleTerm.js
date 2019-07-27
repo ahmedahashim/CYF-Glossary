@@ -20,6 +20,8 @@ export default class SingleTerm extends Component {
   }
 
   HandleUpdate = data => {
+
+    // console.log("running")
     return this.setState({
       term: data
     });
@@ -89,6 +91,8 @@ export default class SingleTerm extends Component {
   };
 
   render() {
+    // console.log(this.props);
+    // console.log(this.state.term)
     return (
       <Fragment>
         {this.state.term !== null ? this.SingleTermContent() : null}

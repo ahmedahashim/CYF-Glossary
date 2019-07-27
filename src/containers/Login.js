@@ -42,13 +42,13 @@ class Login extends Component {
     e.preventDefault();
 
     if (formValid(this.state)) {
-      console.log(`
-        --SUBMITTING--
+      // console.log(`
+      //   --SUBMITTING--
 
-        Email: ${this.state.email}
-        Password: ${this.state.password}
+      //   Email: ${this.state.email}
+      //   Password: ${this.state.password}
 
-      `);
+      // `);
       const loginObj = {
         email: this.state.email,
         password: this.state.password
@@ -79,11 +79,11 @@ class Login extends Component {
         break;
     }
 
-    this.setState({ formErrors, [name]: value }, () => console.log(this.state));
+    this.setState({ formErrors, [name]: value }); //, () => console.log(this.state));
   };
 
   render() {
-    console.log(ls.get("currentUser"));
+    // console.log(ls.get("currentUser"));
     const { formErrors } = this.state;
 
     return (

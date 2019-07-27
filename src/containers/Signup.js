@@ -53,15 +53,15 @@ class Signup extends Component {
     e.preventDefault();
 
     if (formValid(this.state)) {
-      console.log(`
-        --SUBMITTING--
-        First Name: ${this.state.firstName}
-        Last Name: ${this.state.lastName}
-        Email: ${this.state.email}
-        Password: ${this.state.password}
-        Status:${this.state.status}
-        Confirm Password:${this.state.confirmPassword}
-      `);
+      // console.log(`
+      //   --SUBMITTING--
+      //   First Name: ${this.state.firstName}
+      //   Last Name: ${this.state.lastName}
+      //   Email: ${this.state.email}
+      //   Password: ${this.state.password}
+      //   Status:${this.state.status}
+      //   Confirm Password:${this.state.confirmPassword}
+      // `);
       const regObj = {
         firstName: this.state.firstName,
         lastName: this.state.lastName,
@@ -143,8 +143,8 @@ class Signup extends Component {
         break;
     }
 
-    this.setState({ formErrors, [name]: value }, () => console.log(this.state));
-  };
+    this.setState({ formErrors, [name]: value })
+  }
 
   render() {
     const { formErrors } = this.state;

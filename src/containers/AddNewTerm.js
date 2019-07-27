@@ -68,6 +68,10 @@ class AddNewTerm extends Component {
       .then(response => response.json())
       .catch(error => console.error("Error:", error))
       .then(response => {
+        // console.log(response);
+        this.setState({
+          generatedLink: [response.topic_slug, response.term_slug]
+        });
         if (response._id) {
           this.setState({
             generatedLink: [response.topic_slug, response.term_slug, response.topic]
