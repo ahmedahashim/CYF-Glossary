@@ -1,13 +1,11 @@
-
-
 .wrapper {
-  height: 90vh;
+  height: auto;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
- background-color: transparentr gba(0, 0, 0, 0);
+  background-color: transparentr gba(0, 0, 0, 0);
 }
 
 .form-wrapper {
@@ -46,7 +44,7 @@ input {
   border-radius: 5px;
   outline: none;
   border: 1px solid #cfcfcf;
-  width:318px
+  width: 318px;
 }
 
 input::placeholder {
@@ -78,25 +76,20 @@ input.error {
 .status,
 .email,
 .password,
-.confirmPassword
-{
+.confirmPassword {
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
 }
 
-
-#name
-{
-  width:156px;
+#name {
+  width: 156px;
 }
 
 .email,
 .password,
 .status,
-.confirmPassword
-
-{
+.confirmPassword {
   width: 100%;
 }
 
@@ -123,12 +116,13 @@ input.error {
 .createAccount button:hover {
   color: #2ba560;
   background-color: #fff;
-  border: 2px solid #2ba560
+  border: 2px solid #2ba560;
 }
 
 .createAccount small {
   color: #999;
-  font-weight: lighter;}
-  #haveaccount{
-    font-size: 15px;
-  }
+  font-weight: lighter;
+}
+#haveaccount {
+  font-size: 15px;
+}

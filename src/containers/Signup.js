@@ -155,7 +155,7 @@ class Signup extends Component {
           <h1>Create Account</h1>
           <form onSubmit={this.handleSubmit} noValidate>
             <div className="firstName">
-              <label htmlFor="firstName">First Name</label>
+              <label htmlFor="firstName">First Name:</label>
               <input
                 id="name"
                 className={formErrors.firstName.length > 0 ? "error" : null}
@@ -170,7 +170,7 @@ class Signup extends Component {
               )}
             </div>
             <div className="lastName">
-              <label htmlFor="lastName">Last Name</label>
+              <label htmlFor="lastName">Last Name:</label>
               <input
                 id="name"
                 className={formErrors.lastName.length > 0 ? "error" : null}
@@ -185,7 +185,7 @@ class Signup extends Component {
               )}
             </div>
             <div className="status">
-              <label htmlFor="status">Student Or Mentor</label>
+              <label htmlFor="status">Are you a student or a mentor?</label>
               <input
                 className={formErrors.status.length > 0 ? "error" : null}
                 placeholder="Student Or Mentor"
@@ -200,7 +200,7 @@ class Signup extends Component {
             </div>
 
             <div className="email">
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">Email:</label>
               <input
                 className={formErrors.email.length > 0 ? "error" : null}
                 placeholder="Email"
@@ -214,7 +214,7 @@ class Signup extends Component {
               )}
             </div>
             <div className="password">
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password">Password:</label>
               <input
                 className={formErrors.password.length > 0 ? "error" : null}
                 placeholder="Password"
@@ -228,7 +228,7 @@ class Signup extends Component {
               )}
             </div>
             <div className="confirmPassword">
-              <label htmlFor="confirmPassword">ConfirmPassword</label>
+              <label htmlFor="confirmPassword">Confirm Password:</label>
               <input
                 className={formErrors.email.length > 0 ? "error" : null}
                 placeholder="confirmPassword"
