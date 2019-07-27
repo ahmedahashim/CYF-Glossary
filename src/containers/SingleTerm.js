@@ -50,7 +50,7 @@ export default class SingleTerm extends Component {
           </h1>
           <div className="content">
             <p className="text-muted">
-              Added by: <b>Guest</b>
+              Added by: <b>{term.user}</b>
             </p>
             <p>{term.definition}</p>
           </div>
@@ -89,7 +89,6 @@ export default class SingleTerm extends Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <Fragment>
         {this.state.term !== null ? this.SingleTermContent() : null}
