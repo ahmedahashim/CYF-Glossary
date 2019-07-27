@@ -83,24 +83,17 @@ class Search extends React.Component {
     return (
       <div>
         <div className="search">
-          <img
-            alt=""
-            src="http://codeyourfuture.io/wp-content/uploads/2019/03/cyf_brand.png"
-            style={{ width: 100, height: 40 }}
-          />
-                <form onSubmit={this.onFormSubmit} className="ui form">
-          <input
-            
-            type="text"
-            value={this.state.term}
-            placeholder="Search term" 
-            onChange={this.onInputChange}
-          />
-                
+          <form onSubmit={this.onFormSubmit} className="ui form">
+            <input
+              type="text"
+              value={this.state.term}
+              placeholder="Search term"
+              onChange={this.onInputChange}
+            />
 
-        <SearchButton />
-                </form>
-      </div>
+            <SearchButton />
+          </form>
+        </div>
       </div>
     );
   }

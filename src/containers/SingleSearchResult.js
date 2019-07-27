@@ -18,7 +18,7 @@ export default class SingleSearchResult extends Component {
         </div>
         <Link to={`/search/${this.props.topic}`}>
           <span className="badge result-badge-topic result-badge-margin">
-            {this.props.topic}
+            {this.props.topic.toUpperCase()}
           </span>
         </Link>
       </div>
