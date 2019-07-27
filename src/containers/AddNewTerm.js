@@ -113,7 +113,7 @@ class AddNewTerm extends Component {
     return (
       <div>
         <div className="results-container justify-content-center">
-          <h1 className="add-new-heading">Add New Term</h1>
+          
           {this.state.generatedLink === null ? null : (
             <GeneratedLink
               topic={this.state.generatedLink[0]}
@@ -122,8 +122,9 @@ class AddNewTerm extends Component {
             />
           )}
           {this.state.generateError === false ? null : <GeneratedError />}
-
+            
           <form onSubmit={this.handleSubmit} id="addNew">
+            <h1 className="add-new-heading">Add New Term</h1>
             <div className="add-new-wrapper">
               <SingleInput
                 label="Term"

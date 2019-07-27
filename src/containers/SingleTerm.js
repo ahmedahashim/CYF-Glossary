@@ -5,6 +5,7 @@ import "./SingleTerm.css";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./SingleSearchResult.css";
 import "./Grid.css";
+import ls from "local-storage";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook } from "@fortawesome/free-solid-svg-icons";
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
@@ -20,7 +21,6 @@ export default class SingleTerm extends Component {
   }
 
   HandleUpdate = data => {
-
     // console.log("running")
     return this.setState({
       term: data
@@ -53,6 +53,7 @@ export default class SingleTerm extends Component {
           <div className="content">
             <p className="text-muted">
               Added by: <b>{term.user}</b>
+              {/* <b></b> {ls.get("currentUser")} */}
             </p>
             <p>{term.definition}</p>
           </div>
