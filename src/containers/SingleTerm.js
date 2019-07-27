@@ -2,11 +2,16 @@ import React, { Component, Fragment } from "react";
 import SingleResources from "./SingleResources";
 import SingleRelated from "./SingleRelated";
 import "./SingleTerm.css";
-
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import "./SingleSearchResult.css";
+import "./Grid.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBook } from "@fortawesome/free-solid-svg-icons";
+import { faGlobe } from "@fortawesome/free-solid-svg-icons";
+import { faLink } from "@fortawesome/free-solid-svg-icons";
 import { Fetcher } from "./fetcher.js";
 const fetcher = new Fetcher();
-
-class SingleTerm extends Component {
+export default class SingleTerm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,7 +20,6 @@ class SingleTerm extends Component {
   }
 
   HandleUpdate = data => {
-    console.log("running");
     return this.setState({
       term: data
     });
@@ -28,48 +32,68 @@ class SingleTerm extends Component {
     });
   }
 
-  content = () => {
-    if (this.state.term !== null) {
-      return (
-        <Fragment>
-          <h2>{this.state.term.term}</h2>
-          <hr className="term-hr" />
-          <p>{this.state.term.definition}</p>
-          <h2>Additional Resources</h2>
-          <hr className="term-hr" />
+  SingleTermContent = () => {
+    if (this.state.term === null) {
+      return;
+    }
+
+    const term = this.state.term;
+
+    return (
+      <div className="results-wrapper">
+        <div className="sm-col-12 single-result">
+          <h1 className="term-heading">
+            <span className="term-icon">
+              <FontAwesomeIcon icon={faBook} size="1x" />{" "}
+            </span>
+            <span className="term-heading-decoration">{term.term}</span>
+          </h1>
+          <div className="content">
+            <p className="text-muted">
+              Added by: <b>Guest</b>
+            </p>
+            <p>{term.definition}</p>
+          </div>
+          <div className="term-heading">
+            <span className="term-icon">
+              <FontAwesomeIcon icon={faGlobe} size="1x" />{" "}
+            </span>
+            <span className="term-heading-decoration">Learn more</span>
+          </div>
           <SingleResources
-            content={this.state.term.resources}
+            content={term.resources}
+            links={term.resources_url}
+            url="resources_url"
             name="resources"
-            placeholder="Resource URL"
-            id={this.state.term._id}
+            placeholderURL="Resource URL"
+            placeholderName="Resource Name"
+            id={term._id}
             handleUpdate={this.HandleUpdate}
           />
-
-          <h2>Related Terms</h2>
-          <hr className="term-hr" />
+          <div className="term-heading">
+            <span className="term-icon">
+              <FontAwesomeIcon icon={faLink} size="1x" />{" "}
+            </span>
+            <span className="term-heading-decoration">Related Terms</span>
+          </div>
           <SingleRelated
-            content={this.state.term.related_terms}
+            content={term.related_terms}
             name="related_terms"
             placeholder="Related Term"
-            id={this.state.term._id}
+            id={term._id}
             handleUpdate={this.HandleUpdate}
           />
-        </Fragment>
-      );
-    }
+        </div>
+      </div>
+    );
   };
 
   render() {
-    console.log(this.props);
-    console.log(this.state.term);
+    console.log(this.state);
     return (
       <Fragment>
-        <div className="term-wrapper single-term-container">
-          {this.state.term === null ? null : this.content()}
-        </div>
+        {this.state.term !== null ? this.SingleTermContent() : null}
       </Fragment>
     );
   }
 }
-
-export default SingleTerm;

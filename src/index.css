@@ -3,11 +3,16 @@ body {
   padding: 0;
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
- background-color: transparentr gba(0, 0, 0, 0);
+  background-color: transparentr gba(0, 0, 0, 0);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "PT Serif", serif;
 }
 select.form-control,
@@ -15,7 +20,7 @@ textarea.form-control,
 input.form-control {
   font-size: 16px;
 }
-input[type=file] {
+input[type="file"] {
   width: 100%;
 }
 code {
@@ -23,81 +28,137 @@ code {
     monospace;
 }
 
-.add-new-wrapper{
+.add-new-wrapper {
   margin: 0 auto;
 }
 
-.add-margin-left{
+.add-margin-left {
   margin-left: 10px;
   cursor: pointer;
 }
 
-.plus{
+.plus {
   font-weight: bold;
   font-size: 24px;
   cursor: pointer;
   text-align: right;
 }
 
-.sm-col-6 a{
+.sm-col-6 a {
   font-size: 16px;
 }
 
-.results-container{
+.results-container {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: transparentr gba(0, 0, 0, 0);
-
 }
-
-
 
 .single-result-link {
   margin-left: 15px;
 }
 
-.icon{
+.icon-container{
+  margin-left: 10px;
+  margin-bottom: 20px;
+}
+
+.icon {
   cursor: pointer;
   width: 100%;
 }
 
+.term-icon {
+  margin-right: 10px;
+  width: 100%;
+}
 
-.content a{
+@media (max-width: 768px) {
+  .term-icon {
+    display: none;
+  }
+}
+
+.list-margin{
+  margin-bottom: 25px;
+}
+
+.content a {
   text-decoration: none;
   color: white;
 }
 
-.content a:hover, a:visited, a:link, a:active
-{
-    text-decoration: none;
+.content{
+  margin-bottom: 15px;
+  display: block;
+  text-align: left;
+  margin-left: 15px;
+  margin-right: 30px;
 }
 
-.navbar{
+
+.content a:hover,
+a:visited,
+a:link,
+a:active {
+  text-decoration: none;
+}
+
+.navbar {
   z-index: 1;
 }
 
-.link{
+.link {
   display: flex;
   justify-content: flex-start;
   margin-left: 6px;
   font-size: 16px;
-  }
-.button-container{
+}
+.button-container {
   width: 20%;
 }
 
-.text-area-container{
+.text-area-container {
   width: 100%;
 }
 
-.results-wrapper{
+
+
+.results-wrapper {
   width: 80%;
   margin: 0 auto 50px;
 }
 
-.utility-margin-auto{
+@media (max-width: 750px) {
+  .results-wrapper {
+    margin: 0;
+  }
+}
+
+.utility-margin-auto {
   margin: -40px auto 10px;
+}
+
+.term-definition{
+  font-size: 36px;
+}
+
+.term-heading-decoration{
+  text-decoration: underline;
+}
+
+.term-heading {
+  text-align: left;
+  margin-left: 15px;
+  text-transform: capitalize;
+  display: inline-block;
+  width: 100%;
+  font-size: 5vh;
+  color: #111;
+  font-weight: lighter;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }

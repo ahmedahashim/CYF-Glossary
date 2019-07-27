@@ -72,11 +72,11 @@ export default class SingleRelated extends Component {
   render() {
     return (
       <Fragment>
-        <ul>
+        <ul className='list-margin'>
           {this.ResourceContent()}
           {this.state.count.length > 0 ? this.addContent() : null}
         </ul>
-        <div>
+        <div className="icon-container">
           <span className="icon">
             <FontAwesomeIcon
               icon={faPlusSquare}

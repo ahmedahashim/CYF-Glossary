@@ -10,6 +10,7 @@ export default class SingleResources extends Component {
     this.state = {
       count: [],
       resources: this.props.content,
+      links: this.props.links,
       addResource: false
     };
   }
@@ -31,7 +32,9 @@ export default class SingleResources extends Component {
       return (
         <SingleResourceInput
           name={this.props.name}
-          placeholder={this.props.placeholder}
+          url={this.props.url}
+          placeholderName={this.props.placeholderName}
+          placeholderURL={this.props.placeholderURL}
           key={key}
           id={this.props.id}
           handleUpdate={this.props.handleUpdate}
@@ -60,11 +63,11 @@ export default class SingleResources extends Component {
     if (this.state.resources) {
       return (
         <Fragment>
-          {this.state.resources.map((link, index) => {
+          {this.state.resources.map((content, index) => {
             return (
               <li key={index}>
-                <a className="link" href={link}>
-                  {link}{" "}
+                <a className="link" href={this.state.links[index]}>
+                  {content}{" "}
                 </a>
               </li>
             );
@@ -76,12 +79,13 @@ export default class SingleResources extends Component {
 
   render() {
     return (
-      <Fragment>
-        <ul>
+      <div className="sm-col-12">
+        <ul className="list-margin">
           {this.ResourceContent()}
           {this.state.count.length > 0 ? this.addContent() : null}
         </ul>
-        <div>
+
+        <div className="icon-container">
           <span className="icon">
             <FontAwesomeIcon
               icon={faPlusSquare}
@@ -99,7 +103,7 @@ export default class SingleResources extends Component {
             </span>
           )}
         </div>
-      </Fragment>
+      </div>
     );
   }
 }

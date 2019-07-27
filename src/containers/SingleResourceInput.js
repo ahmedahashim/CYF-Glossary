@@ -2,35 +2,37 @@ import React, { Component, Fragment } from "react";
 import { Fetcher } from "./fetcher.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusSquare } from "@fortawesome/free-solid-svg-icons";
+import ls from "local-storage";
 const fetcher = new Fetcher();
 
 export default class SingleResourceInput extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      input: null
-    };
   }
 
   HandlePushNewRelated = e => {
     const input = e.target.value;
+    const name = e.target.name;
     this.setState({
-      input: input
+      [name]: input
     });
   };
 
   HandleSubmitNewRelated = e => {
-    const reqBody = {
-      id: this.props.id,
-      field: this.props.name,
-      value: this.state.input
-    };
-    this.sendFetch(reqBody);
+    const state = this.state;
+    const obj = {};
+    for (var key in state) {
+      if (state[key] !== undefined) {
+        obj[key] = state[key];
+      }
+    }
+    obj["id"] = this.props.id;
+    this.sendFetch(obj);
   };
 
   sendFetch(obj) {
     return fetch(
-      `https://cyf-glossary-api.glitch.me/api/pushOne/${this.props.id}`,
+      `https://cyf-glossary-api.glitch.me/api/push/${this.props.id}`,
       {
         method: "POST",
         body: JSON.stringify(obj),
@@ -49,13 +51,23 @@ export default class SingleResourceInput extends Component {
   }
 
   render() {
+    console.log(ls.get("currentUser"));
     return (
       <Fragment>
         <li>
           <input
-            placeholder={this.props.placeholder}
+            placeholder={this.props.placeholderName}
             type="text"
             name={this.props.name}
+            noValidate
+            onChange={this.HandlePushNewRelated}
+          />
+        </li>
+        <li>
+          <input
+            placeholder={this.props.placeholderURL}
+            type="url"
+            name={this.props.url}
             noValidate
             onChange={this.HandlePushNewRelated}
           />
