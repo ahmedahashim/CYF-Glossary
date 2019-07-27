@@ -28,12 +28,14 @@ class AddNewTerm extends Component {
       definition: formData.definition,
       code_example: formData.code_example,
       topic: formData.topic,
+      resources_url: Object.values(formData.resourcesURL),
       resources: Object.values(formData.resources),
       related_terms: Object.values(formData.related),
       term_slug: this.createSlug(formData.term),
       topic_slug: this.createSlug(formData.topic),
       user: ls.get("currentUser")
     };
+    console.log(reqBody);
     this.sendFetch(reqBody);
     // this.inputRef.scrollIntoView(true , {behavior: "smooth"})
     window.scroll({
@@ -72,7 +74,7 @@ class AddNewTerm extends Component {
         });
         if (response._id) {
           this.setState({
-            generatedLink: [response.topic_slug, response.term_slug]
+            generatedLink: [response.topic_slug, response.term_slug, response.topic]
           });
         } else {
           this.setState({
@@ -107,11 +109,6 @@ class AddNewTerm extends Component {
     }));
   };
 
-  // setInputRef = (inputEl) => {
-  //   this.inputRef = inputEl;
-
-  // }
-
   render() {
     return (
       <div>
@@ -121,6 +118,7 @@ class AddNewTerm extends Component {
             <GeneratedLink
               topic={this.state.generatedLink[0]}
               term={this.state.generatedLink[1]}
+              topicName={this.state.generatedLink[2]}
             />
           )}
           {this.state.generateError === false ? null : <GeneratedError />}
@@ -155,6 +153,7 @@ class AddNewTerm extends Component {
               />
               <AddNewResource
                 controlFunc={this.handleMultiple}
+                url="resourcesURL"
                 name="resources"
               />
               <AddNewRelated controlFunc={this.handleMultiple} name="related" />
