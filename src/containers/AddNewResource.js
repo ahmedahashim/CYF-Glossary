@@ -18,7 +18,13 @@ class AddNewResource extends Component {
     e.preventDefault();
     const value = e.target.value;
     const name = e.target.name;
-    this.props.controlFunc(value, this.props.name, name);
+    let type;
+    if(name.includes('name')){
+      type = this.props.name
+    }else{
+      type = this.props.url
+    }
+    this.props.controlFunc(value, type, name);
   };
 
   ResourceContent = () => {
@@ -26,6 +32,15 @@ class AddNewResource extends Component {
       return (
         <Fragment key={index}>
           <div className="loginEmail">
+          <label htmlFor="Resource">Resource Name</label>
+            <input
+              placeholder="Resource Name"
+              type="text"
+              name={`resource_name${index}`}
+              noValidate
+              onChange={this.callback}
+            />
+            
             <label htmlFor="Resource">Resource URL</label>
             <input
               placeholder="Resource URL"

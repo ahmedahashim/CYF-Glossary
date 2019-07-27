@@ -14,7 +14,7 @@ class GeneratedLink extends Component {
               state: { post: this.props.term }
             }}
           >
-            {this.props.term}
+            {this.props.topicName} was added to CYF Glossary!
           </Link>
         </div>
         </div>

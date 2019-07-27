@@ -35,7 +35,8 @@ class Routes extends Component {
           .catch(error => console.error("Error:", error))
           .then(response => {
             if (response._id) {
-              ls.set("currentUser", response._id);
+              ls.set("currentUser", response.firstName);
+              ls.set("currentUserId", response._id);
               this.HandleRedirect();
             }
           });
